@@ -159,12 +159,6 @@ std::u32string conv_u32(std::u32string Str)
         {
             if (Ch(Str, i - 1) == U'⠠')
             {
-                // 원본: Type_1_double_dict.get(Str[i+1], "")  — 여기서 Str[i+1]은
-                // 단일 문자 '⠎' 뿐이다. 그런데 Type_1_double_dict 안에서 "껏"은
-                // 2글자 키 "⠸⠎" 에 매달려 있고 단일 키 '⠎' 항목은 없으므로,
-                // 원본에서도 이 분기는 실제로는 항상 빈 문자열만 추가한다
-                // (의도는 "껏"이었을 가능성이 높지만 실제 동작은 그렇지 않음).
-                // 동작을 그대로 재현하기 위해 의미 추측 없이 동일한 조회를 수행한다.
                 newstr += dget(Type_1_double_dict, Ch(Str, i + 1));
                 i += 2;
             }
