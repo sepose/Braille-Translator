@@ -86,11 +86,6 @@ std::u32string conv_u32(std::u32string Str)
     long long i = 0;
     long long j = 0;
 
-    // 아래 while 본문은 의도적으로 "여러 개의 독립된 if" 로 되어 있고
-    // else-if 체인이 아니다 (원본과 동일). 즉 한 번의 바깥 루프 반복 안에서
-    // 여러 분기가 연달아 실행될 수 있으며, 맨 끝의 i++ 도 continue 가 없는 한
-    // 항상 추가로 한 번 더 실행된다. 원본 동작을 그대로 보존하기 위해
-    // 구조를 바꾸지 않았다.
     while (i < static_cast<long long>(Str.size()))
     {
 
