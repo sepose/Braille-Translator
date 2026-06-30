@@ -22,13 +22,6 @@ void replace_all(std::u32string &s, const std::u32string &from, const std::u32st
     }
 }
 
-// Python의 Str[idx] 인덱싱과 동일하게 동작하는 안전 접근자.
-//  - idx 가 음수면 Python처럼 뒤에서부터 wrap (Str[i-1]에서 i==0일 때 등장)
-//  - 그래도 범위를 벗어나면 U'\0' 을 반환한다.
-//    (원본은 이 경우 IndexError 로 죽는다. 원본은 문자열 앞뒤에 점자 빈칸 3개를
-//     패딩해 두기 때문에 정상적인 입력에서는 이 케이스에 도달하지 않는다.
-//     여기서는 비정상/잘림 입력에 대한 방어로 sentinel 을 추가했다 — 원본에는
-//     없는 안전장치이며, 명시적으로 표시해 둔다.)
 char32_t Ch(const std::u32string &Str, long long idx)
 {
     long long n = static_cast<long long>(Str.size());
